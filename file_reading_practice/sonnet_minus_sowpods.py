@@ -58,3 +58,25 @@ After sorting -> ['a', 'compare', 'i', 'to'].
 =================================================
 
 """
+sowpods = set()
+
+with open("sowpods.txt", "r") as file:
+    for word in file:
+        word = word.strip().lower()
+        sowpods.add(word)
+
+unique_words = []
+
+with open("sonnet_words.txt", "r") as file:
+    for word in file:
+        word = word.strip().lower()
+
+        if word not in sowpods:
+            unique_words.append(word)
+
+unique_words = sorted(set(unique_words))
+
+print("Words in sonnet but not in sowpods:")
+print(unique_words)
+
+print("Total:", len(unique_words))
